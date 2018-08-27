@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!--web.xml配置各节点说明-->
+    <!--<filter>指定一个过滤器。-->
+    <!--<filter-name>用于为过滤器指定一个名字，该元素的内容不能为空。-->
+    <!--<filter-class>元素用于指定过滤器的完整的限定类名。-->
+    <!--<init-param>元素用于为过滤器指定初始化参数，它的子元素<param-name>指定参数的名字，<param-value>指定参数的值。-->
+    <!--在过滤器中，可以使用FilterConfig接口对象来访问初始化参数。-->
+    <!--<filter-mapping>元素用于设置一个 Filter 所负责拦截的资源。一个Filter拦截的资源可通过两种方式来指定：Servlet 名称和资源访问的请求路径-->
+    <!--<filter-name>子元素用于设置filter的注册名称。该值必须是在<filter>元素中声明过的过滤器的名字-->
+    <!--<url-pattern>设置 filter 所拦截的请求路径(过滤器关联的URL样式)-->
+    <!--<servlet-name>指定过滤器所拦截的Servlet名称。-->
+    <!--<dispatcher>指定过滤器所拦截的资源被 Servlet 容器调用的方式，可以是REQUEST,INCLUDE,FORWARD和ERROR之一，默认REQUEST。用户可以设置多个<dispatcher>子元素用来指定 Filter 对资源的多种调用方式进行拦截。-->
+    <!--<dispatcher>子元素可以设置的值及其意义-->
+    <!--REQUEST：当用户直接访问页面时，Web容器将会调用过滤器。如果目标资源是通过RequestDispatcher的include()或forward()方法访问时，那么该过滤器就不会被调用。-->
+    <!--INCLUDE：如果目标资源是通过RequestDispatcher的include()方法访问时，那么该过滤器将被调用。除此之外，该过滤器不会被调用。-->
+    <!--FORWARD：如果目标资源是通过RequestDispatcher的forward()方法访问时，那么该过滤器将被调用，除此之外，该过滤器不会被调用。-->
+    <!--ERROR：如果目标资源是通过声明式异常处理机制调用时，那么该过滤器将被调用。除此之外，过滤器不会被调用。-->
+    <filter>
+        <filter-name>LogFilter</filter-name>
+        <filter-class>LogFilter</filter-class>
+        <init-param>
+            <param-name>param</param-name>
+            <param-value>过滤器生成</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>LogFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <servlet-name>HelloWorld</servlet-name>
+    </filter-mapping>
+    <!--定义servlet-->
+    <servlet>
+        <servlet-name>HelloWorld</servlet-name>
+        <servlet-class>HelloWorld</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HelloWorld</servlet-name>
+        <url-pattern>/HelloWorld</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ErrorHandler</servlet-name>
+        <servlet-class>ErrorHandler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ErrorHandler</servlet-name>
+        <url-pattern>/ErrorHandler</url-pattern>
+    </servlet-mapping>
+    <!--异常处理-->
+    <!-- error-code 相关的错误页面 -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/ErrorHandler</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/ErrorHandler</location>
+    </error-page>
+
+    <!-- exception-type 相关的错误页面 -->
+    <error-page>
+        <exception-type>
+            javax.servlet.ServletException
+        </exception-type >
+        <location>/ErrorHandler</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>java.io.IOException</exception-type >
+        <location>/ErrorHandler</location>
+    </error-page>
+</web-app>
