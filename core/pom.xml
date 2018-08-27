@@ -9,19 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>servlet</artifactId>
+    <artifactId>core</artifactId>
 
     <properties>
         <servlet.version>3.0.1</servlet.version>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+
     <build>
         <resources>
             <resource>
@@ -46,4 +39,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
