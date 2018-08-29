@@ -40,4 +40,7 @@
 ###AbstractSequentialList
 * 不通过get取元素，而是通过迭代器
 ###Queue
-test
+* FIFO
+* 循环队列 rear = (rear - size) % size，放满条件 (rear - front) % size = -1，rear + size - font
+* ![](../../resources/queue.jpg)
+* 禁止添加 null 元素，但有些实现类没响应，例如LinkedList
