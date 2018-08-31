@@ -72,6 +72,55 @@ Vector 出生的比较早，JDK 1.0 就出生了，ArrayList JDK 1.2 才出来
 Vector 比 ArrayList 多一种迭代器 Enumeration
 Vector 是线程安全的，ArrayList 不是
 Vector 默认扩容 2 倍，ArrayList 是 1.5
-### stack
-* 继承自Vector,LIFO,采用数组实现
+### Stack
+* 继承自Vector,LIFO,采用数组实现,也能用链表实现
 * push(),pop(),peek()
+### Map
+* key-value对
+* KeySet,Values,Entry
+* 通过 Map.entrySet() 方法获得的是一组 Entry 的集合，保存在 Set 中，所以 Map 中的 Entry 也不能重复。
+  public Set<Map.Entry<K,V>> entrySet();
+* 3种遍历
+```
+Set set = map.keySet();
+    for (Object key : set) {
+        System.out.println(map.get(key));
+    }
+    
+Collection values = map.values();
+Iterator iterator = values.iterator();
+while (iterator.hasNext()){
+    System.out.println("value " + iterator.next());
+}
+
+Set entrySet = map.entrySet();
+for (Object o : entrySet) {
+    Map.Entry entry = (Map.Entry) o;
+    System.out.println(entry);      //key=value
+    System.out.println(entry.getKey() + " / " + entry.getValue());
+}
+```
+* 实现类：Hashtable 古老，线程安全;HashMap：速度快，无序；TreeMap:有序，效率低；LinkedHashMap:结合 HashMap 和 TreeMap 的有点，有序的同时效率也不错，仅比 HashMap 慢一点
+### HashMap
+* 哈希 其实是随机存储的一种优化，先进行分类，然后查找时按照这个对象的分类去找。
+* 链接法,将所有关键字为同义词的结点链接在同一个单链表中。开放定址法,包括线性探查法(适用稀疏表)，双重散列法,hi=(h(key)+i*h1(key)) ％ m，0 ≤ i ≤ m-1,h1(key) 的值和 m 互素
+* 在哈希表上的插入、查找、删除等操作的时间复杂度是 O(1)
+* HashMap 中的加载因子为 0.75
+
+### AbstractMap
+* 唯一的抽象方法：public abstract Set<Entry<K,V>> entrySet();
+* 不可变
+
+### HashMap
+* 数组+链表
+* 底层实现是 链表数组，JDK 8 后又加了 红黑树
+* 实现了 Map 全部的方法
+* key 用 Set 存放，所以想做到 key 不允许重复，key 对应的类需要重写 hashCode 和 equals 方法
+* 允许空键和空值（但空键只有一个，且放在第一位，下面会介绍）
+* 元素是无序的，而且顺序会不定时改变
+* 插入、获取的时间复杂度基本是 O(1)（前提是有适当的哈希函数，让元素分布在均匀的位置）
+* 遍历整个 Map 需要的时间与 桶(数组) 的长度成正比（因此初始化时 HashMap 的容量不宜太大）
+* 两个关键因子：初始容量(默认16,必须是 2 的整数次方)、加载因子(0.75)
+* fail-fast机制
+* 当桶数量不大于8时采用数组，超过后采用树(JDK1.8特性)
+
