@@ -1,4 +1,4 @@
-package concurrency.CAS;
+package Concurrent.CAS;
 
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;

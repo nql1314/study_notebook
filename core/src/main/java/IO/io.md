@@ -4,7 +4,7 @@
 * 字节操作：InputStream 和 OutputStream
 * 字符操作：Reader 和 Writer
 * 对象操作：Serializable
-* 网络操作：Socket
+* 网络操作：IO.Socket
 * 新的输入/输出：NIO
 #### 流
 * 流：代表任何有能力产出数据的数据源对象或者是有能力接受数据的接收端对象<Thinking in Java>
