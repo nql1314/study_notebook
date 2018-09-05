@@ -1,4 +1,4 @@
-package reflection.demo.field;
+package Reflection.demo.field;
 
 import java.lang.reflect.Field;
 /*
@@ -42,7 +42,7 @@ public class Fields {
         //为字段设置值
         f.set(obj, "刘德华");//为Student对象中的name属性赋值--》stu.name = "刘德华"
         //验证
-        Student stu = (Student)obj;
+        reflection.demo.field.Student stu = (reflection.demo.field.Student)obj;
         System.out.println("验证姓名：" + stu.name);
 
 
