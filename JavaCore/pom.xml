@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>core</artifactId>
+    <artifactId>JavaCore</artifactId>
 
     <properties>
         <servlet.version>3.0.1</servlet.version>
