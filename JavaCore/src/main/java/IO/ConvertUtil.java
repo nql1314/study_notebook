@@ -1,4 +1,4 @@
-package Exception;
+package IO;
 
 /*做一个功能验证，要用到inputStream与outputStream的转换，本以为很简单的东东
 搞了蛮久，从"程序员 闫帆"处取得一段代码*/

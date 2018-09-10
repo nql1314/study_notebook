@@ -124,6 +124,7 @@ for (Object o : entrySet) {
 * fail-fast机制
 * 当桶数量不大于8时采用数组，超过后采用树(JDK1.8特性)
 * Hashtable 不允许null 且是同步的
+* hash值高低16位共同参与运算，散列更加均衡。return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
 * 插入逻辑
 ![](../../resources/hashput.jpg)
   1. 先调用 hash() 方法计算哈希值
@@ -147,3 +148,50 @@ for (Object o : entrySet) {
   2. 然后再用 (n - 1) & hash 计算出桶的位置;
   3. 在桶里的链表进行遍历查找。
 * jdk1.8引入红黑树,优化链表元素多的时候查找性能,扩充阈值8，缩小阈值6
+### CopyOnWriteArrayList
+* Copy-On-Write机制：读写分离，修改时copy一个容器进行修改，修改完指向新的容器，可以并发读而不用加锁
+* 写的时候加ReentrantLock,防止多线程copy出多个副本
+* 应用场景：读多写少的并发场景，白名单，黑名单，商品类目的访问和更新场景
+* 存在的问题：内存占用问题（压缩或者使用其他并发容器，如ConcurrentHashMap;数据一致性：属于最终一致性，不是实时一致性，不适用于需要实时读取的场景。
+### Collections.SynchronizedList(List list)
+* List的包装类 除了Iterator的操作没有加锁，其他都加了锁
+* 适用于在写多的安全场景中
+* 与Vector区别： 
+    1. SynchronizedList有很好的扩展和兼容功能。他可以将所有的List的子类转成线程安全的类。 
+    2. 使用SynchronizedList的时候，进行遍历时要手动进行同步处理。
+    3. SynchronizedList可以指定锁定的对象。
+### LinkedHashMap
+* 有序的,相比HashMap添加了一个链表用来维护顺序
+* 标志位accessOrder (值为true时，表示按照访问顺序迭代；值为false时，表示按照插入顺序迭代)。
+* 当accessOrder为true时，可以用来实现LRU(LAST RECENTLY USED)算法
+
+### TreeMap
+//TODO 红黑树
+
+### ConcurrentHashMap
+* 分段锁，分成16(默认)个槽(segment)，每次操作只对对应的槽加锁
+* 写入：
+    1. 先计算hash值，找到segment位置，然后在相应segment 写入；
+    2. 写入加独占锁，其余操作参考hashmap
+
+### ConcurrentSkipListMap
+* 线程安全 有序
+
+### HashSet
+* 底层就是个HashMap，用key存储元素,同理LinkedHashSet,TreeSet等
+
+### ArrayQueue
+* 数组存储，循环队列
+
+### PriorityQueue 
+* 基于堆实现
+
+### PriorityBlockingQueue
+
+### DelayQueue
+
+### ArrayBlockingQueue
+
+### LinkedBlockingQueue
+
+### Stack
