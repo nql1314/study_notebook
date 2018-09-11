@@ -1,4 +1,4 @@
-### IO分类
+## IO分类
 ![](../../resources/io.jpg)
 * 磁盘操作：File
 * 字节操作：InputStream 和 OutputStream
@@ -6,7 +6,7 @@
 * 对象操作：Serializable
 * 网络操作：IO.Socket
 * 新的输入/输出：NIO
-#### 流
+## 流
 * 流：代表任何有能力产出数据的数据源对象或者是有能力接受数据的接收端对象<Thinking in Java>
 * 流的本质:数据传输，根据数据传输特性将流抽象为各种类，方便更直观的进行数据操作。
 ### 输入字节流InputStream
