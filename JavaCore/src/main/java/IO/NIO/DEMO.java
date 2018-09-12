@@ -46,7 +46,7 @@ public class DEMO {
                 Set selectedKeys = selector.selectedKeys();
                 Iterator keyIterator = selectedKeys.iterator();
                 while(keyIterator.hasNext()) {
-                    SelectionKey key = keyIterator.next();
+//                    SelectionKey key = keyIterator.next();
                     if(key.isAcceptable()) {
                         // a connection was accepted by a ServerSocketChannel.
                     } else if (key.isConnectable()) {
