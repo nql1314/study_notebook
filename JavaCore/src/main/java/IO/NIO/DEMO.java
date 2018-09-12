@@ -1,22 +1,27 @@
 package IO.NIO;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
-import java.util.Iterator;
-import java.util.Set;
-
+/**
+ * nio demos
+ */
 public class DEMO {
+    /**
+     * FileChannel
+     */
     static class test1 {
         public static void main(String[] args) throws IOException {
-            RandomAccessFile aFile = new RandomAccessFile(DEMO.class.getClassLoader().getResource("nio/nio-data.txt").getPath(), "rw");
+            RandomAccessFile aFile = new RandomAccessFile("C:\\github\\java_study\\JavaCore\\src\\main\\resources\\nio\\nio-data.txt", "rw");
+
             FileChannel inChannel = aFile.getChannel();
 
             ByteBuffer buf = ByteBuffer.allocate(48);
 
-            int bytesRead = inChannel.read(buf); //读取48个字符
+            int bytesRead = inChannel.read(buf); //从channel读取48个字符到buffer
             while (bytesRead != -1) {
 
                 System.out.println("Read " + bytesRead);
@@ -29,36 +34,25 @@ public class DEMO {
                 buf.clear();  //清空
                 bytesRead = inChannel.read(buf); //重新读取，然后循环
             }
+
+            File file = new File("C:\\github\\java_study\\JavaCore\\src\\main\\resources\\nio\\nio-data.txt");
+            FileOutputStream outputStream = new FileOutputStream(file,true);
+            FileChannel channel = outputStream.getChannel();
+            String newData = "New String to write to file..." + System.currentTimeMillis()+"\n";
+
+            ByteBuffer buf2 = ByteBuffer.allocate(48);
+            buf2.clear();
+            buf2.put(newData.getBytes());
+
+            buf2.flip();
+
+            while(buf2.hasRemaining()) {
+                channel.write(buf2);
+            }
+            channel.close();
             aFile.close();
+            outputStream.close();
         }
     }
 
-    static class test2 {
-        public static void main(String[] args) throws IOException {
-            SocketChannel channel = SocketChannel.open();
-            channel.connect(new InetSocketAddress("http://jenkov.com", 80));
-            Selector selector = Selector.open();
-            channel.configureBlocking(false);
-            SelectionKey key = channel.register(selector, SelectionKey.OP_READ);
-            while(true) {
-                int readyChannels = selector.select();
-                if(readyChannels == 0) continue;
-                Set selectedKeys = selector.selectedKeys();
-                Iterator keyIterator = selectedKeys.iterator();
-                while(keyIterator.hasNext()) {
-//                    SelectionKey key = keyIterator.next();
-                    if(key.isAcceptable()) {
-                        // a connection was accepted by a ServerSocketChannel.
-                    } else if (key.isConnectable()) {
-                        // a connection was established with a remote server.
-                    } else if (key.isReadable()) {
-                        // a channel is ready for reading
-                    } else if (key.isWritable()) {
-                        // a channel is ready for writing
-                    }
-                    keyIterator.remove();
-                }
-            }
-        }
-    }
 }
