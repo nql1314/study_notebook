@@ -5,7 +5,7 @@
 * Java NIO(New IO)是一个可以替代标准Java IO API的IO API（从Java 1.4开始)，Java NIO提供了与标准IO不同的IO工作方式。
 * 核心部分：Channels,Buffers,Selectors
 * 数据可以从Channel读到Buffer中，也可以从Buffer 写到Channel中
-* 非阻塞IO
+* 同步非阻塞
 
 ### Channel
 FileChannel 从文件中读写数据。
