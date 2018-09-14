@@ -1,4 +1,4 @@
-package JDBC;
+package SOA.JDBC;
 //STEP 1. Import required packages
 import java.sql.*;
 
