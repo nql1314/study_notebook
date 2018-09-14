@@ -30,3 +30,8 @@
     3. BufferedWriter是一个装饰器为Writer提供缓冲功能。
     4. PrintWriter和PrintStream极其类似，功能和使用也非常相似。
     5. OutputStreamWriter是OutputStream到Writer转换的桥梁，它的子类FileWriter其实就是一个实现此功能的具体类（具体可以研究一SourceCode）。功能和使用和OutputStream极其类似.
+## 序列化
+* 将java对象转成二进制流保存在磁盘中或者网络传输，并且能恢复。
+* 实现Serializable或者Extmalizable接口
+* 使用transient修饰的变量不被序列化工具存储
+* 静态变量不会序列化
