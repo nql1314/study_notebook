@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <class id="001">
+        <student id="001">
+            <name>一班--张三</name>
+            <age>20</age>
+        </student>
+        <student id="002">
+            <name>一班--李四</name>
+            <age>20</age>
+        </student>
+    </class>
+    <class id="002">
+        <student id="001">
+            <name>二班--王五</name>
+            <age>20</age>
+        </student>
+        <student id="002">
+            <name>二班--赵六</name>
+            <age>20</age>
+        </student>
+    </class>
+</root>
