@@ -34,6 +34,14 @@
         </constructor-arg>
     </bean>
 
+    <!--定义消息队列方法3-->
+    <!--<bean id="destination" class="org.apache.activemq.command.ActiveMQTopic">-->
+        <!--<constructor-arg>-->
+            <!--<value>queue</value>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
+
+
     <!-- 定义JmsTemplate-->
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
         <property name="connectionFactory" ref="jmsConnectionFactory"/>
