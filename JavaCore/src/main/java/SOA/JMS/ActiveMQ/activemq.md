@@ -10,3 +10,6 @@
     4. REDELIVERED_ACK_TYPE = 3    消息需"重发"，比如consumer处理消息时抛出了异常，broker稍后会重新发送此消息
     5. INDIVIDUAL_ACK_TYPE = 4    表示只确认"单条消息",无论在任何ACK_MODE下    
     6. UNMATCHED_ACK_TYPE = 5    BROKER间转发消息时,接收端"拒绝"消息
+* 消息类型(https://www.cnblogs.com/dennisit/p/4551795.html)
+    包括TextMessage、MapMessage、ObjectMessage、BytesMessage、和StreamMessage
+* 模式： Queue（点对点）；Topic（发布/订阅）
