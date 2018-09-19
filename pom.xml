@@ -12,6 +12,8 @@
         <module>JavaCore</module>
         <module>servlet</module>
         <module>activemq_demo</module>
+        <module>rabbitmq_demo</module>
+        <module>kafka_demo</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
