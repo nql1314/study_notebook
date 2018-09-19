@@ -14,6 +14,7 @@
         <module>activemq_demo</module>
         <module>rabbitmq_demo</module>
         <module>kafka_demo</module>
+        <module>J2EE</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
