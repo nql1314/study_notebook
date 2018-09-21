@@ -10,13 +10,13 @@ import java.util.concurrent.RecursiveTask;
 
 public class CountTask extends RecursiveTask {
 
-    private static final int THRESHOLD = 2;//阈值
+    private static final long THRESHOLD = 3;//阈值
 
-    private int start;
+    private long start;
 
-    private int end;
+    private long end;
 
-    public CountTask(int start, int end) {
+    public CountTask(long start, long end) {
 
         this.start = start;
 
@@ -26,9 +26,9 @@ public class CountTask extends RecursiveTask {
 
     @Override
 
-    protected Integer compute() {
+    protected Long compute() {
 
-        int sum = 0;
+        long sum = 0;
 
         //如果任务足够小就计算任务
 
@@ -36,7 +36,7 @@ public class CountTask extends RecursiveTask {
 
         if (canCompute) {
 
-            for (int i = start; i <= end; i++) {
+            for (long i = start; i <= end; i++) {
 
                 sum += i;
 
@@ -46,7 +46,7 @@ public class CountTask extends RecursiveTask {
 
             //如果任务大于阀值，就分裂成两个子任务计算
 
-            int middle = (start + end) / 2;
+            long middle = (start + end) / 2;
 
             CountTask leftTask = new CountTask(start, middle);
 
@@ -60,9 +60,9 @@ public class CountTask extends RecursiveTask {
 
             //等待子任务执行完，并得到其结果
 
-            int leftResult = (int) leftTask.join();
+            long leftResult = (long) leftTask.join();
 
-            int rightResult = (int) rightTask.join();
+            long rightResult = (long) rightTask.join();
 
             //合并子任务
 
@@ -75,12 +75,12 @@ public class CountTask extends RecursiveTask {
     }
 
     public static void main(String[] args) {
-
+        long start = System.currentTimeMillis();
         ForkJoinPool forkJoinPool = new ForkJoinPool();
 
-        //生成一个计算任务，负责计算1+2+3+4
+        //生成一个计算任务，负责计算1~100 sum
 
-        CountTask task = new CountTask(1, 4);
+        CountTask task = new CountTask(1, 10000000);
 
         //执行一个任务
 
@@ -95,7 +95,8 @@ public class CountTask extends RecursiveTask {
         } catch (ExecutionException e) {
 
         }
-
+        System.out.println(System.currentTimeMillis()-start);
     }
+
 
 }
