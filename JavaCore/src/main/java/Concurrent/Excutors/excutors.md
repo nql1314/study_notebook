@@ -28,5 +28,6 @@ https://www.cnblogs.com/zhujiabin/p/5404771.html
  * ExcutorCompletionService
     * 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
 ### Folk/Join
-
+ * 切分任务，合并结果
+ 
 
