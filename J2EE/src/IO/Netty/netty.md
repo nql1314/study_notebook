@@ -8,7 +8,6 @@
 * 核心组件
     * Channel：nio的基本构造，数据载体
     * 回调：使用回调处理事件
-    * Future：netty提供了自己的实现ChannelFuture
-    * 事件和ChannelHandler
-###
-* EventLoop: 为每个channel分配一个EventLoop，用以处理所有事件,一个给定Channel 的I/O 操作都是由相同的Thread 执行的，实际上消除了对于同步的需要
+    * Future：异步操作的结果的占位符，netty提供了自己的实现ChannelFuture，注册ChannelFutureListene异步通知
+    * 事件和ChannelHandler：处理方法实现
+    * EventLoop: 为每个channel分配一个EventLoop，用以注册事件,派发给ChannelHandler,一个给定Channel 的I/O 操作都是由相同的Thread 执行的，实际上消除了对于同步的需要
