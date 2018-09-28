@@ -14,6 +14,7 @@
         <module>demos/activemq_demo</module>
         <module>demos/rabbitmq_demo</module>
         <module>demos/kafka_demo</module>
+        <module>demos/activiti_demo</module>
         <module>J2EE</module>
     </modules>
     <dependencies>
