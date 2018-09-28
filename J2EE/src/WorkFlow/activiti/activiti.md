@@ -1,4 +1,6 @@
 ## activiti实战
+http://www.kafeitu.me/
+
 * BPM 业务流程管理 
 * 工作流生命周期：定义，发布，执行，监控，优化
 * BPMN：业务流程建模标注，2.0是通用的规范
@@ -23,7 +25,7 @@
     * Shell任务(serviceTask)
     * 多实例：顺序执行或并行执行多次
 * 网关
-    * 排他网关：if-eles if-else类似的逻辑
+    * 排他网关：if-else if-else类似的逻辑
     * 并行网关：fork-join 
     * 包容网关：包含排他网关和并行网关的特性
     * 事件网关：中间捕获事件
@@ -33,5 +35,13 @@
 * 中间抛出事件：空之间抛出事件，信号中间抛出事件
 * 监听器：执行监听器，任务监听器
 
-###
+### 用户与组及部署管理
+* User 和Group 通过IdentityService操作CRUD，通过createMembership绑定用户和组
+* 候选组：组内成员都可以签收，谁签收谁办理，候选组包含候选人
+* 流程定义文件：扩展名xml或者bpmn，流程定义的图片，表单文件form，规则文件drl
+* 部署方式：classpath方式，InputStream方式，字符串方式，zip/bar格式压缩包方式
+
+### 任务表单
+
+
 
