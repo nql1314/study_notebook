@@ -37,11 +37,21 @@ http://www.kafeitu.me/
 
 ### 用户与组及部署管理
 * User 和Group 通过IdentityService操作CRUD，通过createMembership绑定用户和组
-* 候选组：组内成员都可以签收，谁签收谁办理，候选组包含候选人
-* 流程定义文件：扩展名xml或者bpmn，流程定义的图片，表单文件form，规则文件drl
+* 候选组：组内成员都可以签收，谁签收谁办理，候选组包含候选人,taskService.claim()签收,complete()完成
+* 流程流程资源：扩展名xml或者bpmn，流程定义的图片，表单文件form，规则文件drl
 * 部署方式：classpath方式，InputStream方式，字符串方式，zip/bar格式压缩包方式
+* 流程引擎，流程定义，流程实例
 
 ### 任务表单
+* activiti:initiator 把启动实例的操作人以变量名称"applyUserId"保存到数据库，配合identityService.setAuthenticatedUserId(String userId)使用
+
+### 结合spring
+* 通过配置文件配置processEngine工厂，各个Service
+* 启动流程：保存业务bean到sql返回businessKey-->设置流程启动人员id-->创建流程实例-->业务bean设置流程id，互相绑定
+* 查询待办：根据用户id查询业务task-->根据task查询流程实例并查询对应实体
+* 查询运行和已结束 逻辑同上
+* 签收任务： taskService.claim(taskId, userId);
+* 完成任务： taskService.complete(taskId, variables);
 
 
 
