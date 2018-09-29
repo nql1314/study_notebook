@@ -46,6 +46,7 @@ http://www.kafeitu.me/
 * activiti:initiator 把启动实例的操作人以变量名称"applyUserId"保存到数据库，配合identityService.setAuthenticatedUserId(String userId)使用
 
 ### 结合spring
+https://github.com/henryyan/kft-activiti-demo
 * 通过配置文件配置processEngine工厂，各个Service
 * 启动流程：保存业务bean到sql返回businessKey-->设置流程启动人员id-->创建流程实例-->业务bean设置流程id，互相绑定
 * 查询待办：根据用户id查询业务task-->根据task查询流程实例并查询对应实体
