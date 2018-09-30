@@ -44,6 +44,8 @@ http://www.kafeitu.me/
 
 ### 任务表单
 * activiti:initiator 把启动实例的操作人以变量名称"applyUserId"保存到数据库，配合identityService.setAuthenticatedUserId(String userId)使用
+* 动态表单：form结构通过formProperty写在xml或bpmn中，数据存在ACT_HI_DETAIL中，死板，不易扩展和分析
+* 外置表单：from结构存在另外的form文件，数据存在ACT_HI_DETAIL
 
 ### 结合spring
 https://github.com/henryyan/kft-activiti-demo
