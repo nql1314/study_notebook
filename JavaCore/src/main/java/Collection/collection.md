@@ -100,7 +100,7 @@ for (Object o : entrySet) {
     System.out.println(entry.getKey() + " / " + entry.getValue());
 }
 ```
-* 实现类：Hashtable 古老，线程安全;HashMap：速度快，无序；TreeMap:有序，效率低；LinkedHashMap:结合 HashMap 和 TreeMap 的有点，有序的同时效率也不错，仅比 HashMap 慢一点
+* 实现类：Hashtable 古老，线程安全;HashMap：速度快，无序；TreeMap:有序，效率低；LinkedHashMap:结合 HashMap 和 TreeMap 的优点，有序的同时效率也不错，仅比 HashMap 慢一点
 ### HashMap
 * 哈希 其实是随机存储的一种优化，先进行分类，然后查找时按照这个对象的分类去找。
 * 链接法,将所有关键字为同义词的结点链接在同一个单链表中。开放定址法,包括线性探查法(适用稀疏表)，双重散列法,hi=(h(key)+i*h1(key)) ％ m，0 ≤ i ≤ m-1,h1(key) 的值和 m 互素
