@@ -3,6 +3,9 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * 实现让一组线程等待至某个状态之后再全部同时执行
+ */
 public class CyclicBarrierExample {
     public static void main(String[] args) throws InterruptedException {
         final int totalThread = 10;

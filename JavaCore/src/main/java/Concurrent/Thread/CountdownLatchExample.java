@@ -13,7 +13,7 @@ public class CountdownLatchExample {
                 countDownLatch.countDown();
             });
         }
-        countDownLatch.await();
+        countDownLatch.await();//挂起当前线程，全部完成后继续
         System.out.println("end");
         executorService.shutdown();
     }
