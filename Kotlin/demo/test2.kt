@@ -29,4 +29,22 @@ fun main(args: Array<String>) {
         }
         return null
     }
+    //区间
+    for (i in 1..4) print(i)
+    for (i in 4..1) print(i)
+    val i = 1
+    if (i in 1..4) {
+        print(i)
+    }
+    for (i in 1..4 step 2) print(i)
+    for (i in 4 downTo 1 step 2) print(i)
+    for (i in 1 until 10) {
+        print(i)
+    }
+    //类型转换
+    val b1: Byte = 1
+    val i1: Int = b1.toInt()
+
+
+
 }
