@@ -23,10 +23,17 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-engine</artifactId>
-            <version>5.20.0</version>
+            <groupId>us.codecraft</groupId>
+            <artifactId>webmagic-extension</artifactId>
+            <version>0.7.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
     </dependencies>
-    <artifactId>activiti_demo</artifactId>
+    <artifactId>spider_demo</artifactId>
 </project>
