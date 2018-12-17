@@ -16,5 +16,6 @@ public class test {
         System.out.println(map);
         student.setName("tom");
         System.out.println(map);
+
     }
 }
