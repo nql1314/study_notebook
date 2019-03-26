@@ -1,0 +1,21 @@
+<properties>
+    <mybatis.helper.version>1.1.1</mybatis.helper.version>
+</properties>
+<dependencies>
+<!--mybatis-->
+<dependency>
+    <groupId>org.mybatis.spring.boot</groupId>
+    <artifactId>mybatis-spring-boot-starter</artifactId>
+    <version>${mybatis.helper.version}</version>
+</dependency>
+<dependency>
+    <groupId>tk.mybatis</groupId>
+    <artifactId>mapper-spring-boot-starter</artifactId>
+    <version>${mybatis.helper.version}</version>
+</dependency>
+<dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper-spring-boot-starter</artifactId>
+    <version>${mybatis.helper.version}</version>
+</dependency>
+</dependencies>

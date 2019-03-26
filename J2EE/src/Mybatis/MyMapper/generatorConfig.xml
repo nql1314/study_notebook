@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="bid.airss.demo.server.dal.util.MyMapper"/>
+        </plugin>
+
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        userId="root"
+                        password="root"
+                        connectionURL="jdbc:mysql://dev.airss.bid:3306/demo?characterEncoding=utf-8&amp;useSSL=false">
+        </jdbcConnection>
+
+        <!--默认false
+           Java type resolver will always use java.math.BigDecimal if the database column is of type DECIMAL or NUMERIC.
+         -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--生成实体类 指定包名 以及生成的地址 （可以自定义地址，但是路径不存在不会自动创建  使用Maven生成在target目录下，会自动创建） -->
+        <javaModelGenerator targetPackage="bid.airss.demo.server.dal.domain" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--生成SQLMAP文件 -->
+        <sqlMapGenerator targetPackage="bid.airss.demo.server.dal.mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!--生成Dao文件 可以配置 type="XMLMAPPER"生成xml的dao实现  context id="DB2Tables" 修改targetRuntime="MyBatis3"  -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="bid.airss.demo.server.dal.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!-- schema-库名,tableName-表名,catalog-生成的文件所在子包,需要enableSubPackages为true,domainObjectName-生成的Bean类名 -->
+
+        <table tableName="user" domainObjectName="UserDo" enableCountByExample="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="id" property="id" javaType="java.lang.Long" jdbcType="INTEGER"/>
+            <columnOverride column="is_author" property="author" javaType="boolean" jdbcType="TINYINT"/>
+            <columnOverride column="is_enabled" property="enabled" javaType="java.lang.Integer" jdbcType="TINYINT"/>
+            <columnOverride column="is_deleted" property="isDeleted" javaType="java.lang.Integer" jdbcType="TINYINT"/>
+            <columnOverride column="created_at" property="createdAt" javaType="java.lang.Long" jdbcType="INTEGER"/>
+            <columnOverride column="updated_at" property="updatedAt" javaType="java.lang.Long" jdbcType="INTEGER"/>
+        </table>
+    </context>
+
+</generatorConfiguration>
