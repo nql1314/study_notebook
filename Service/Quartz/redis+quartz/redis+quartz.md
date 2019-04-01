@@ -1,0 +1,13 @@
+```xml
+            <!--job-->
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>2.2.2</version>
+            </dependency>
+            <dependency>
+                <groupId>net.joelinn</groupId>
+                <artifactId>quartz-redis-jobstore</artifactId>
+                <version>1.1.13</version>
+            </dependency>
+```
