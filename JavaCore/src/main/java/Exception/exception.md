@@ -5,4 +5,4 @@ Java把异常当作对象来处理，并定义一个基类java.lang.Throwable作
 * runtimeException 不受检查的异常，程序可以不作处理，而其他异常需要程序try-catch捕获或者throws抛出
 * 多重catch，依次检查，第一个匹配的执行，其他旁路
 * finally子句是可选项，可以有也可以无，但是每个try语句至少需要一个catch或者finally子句，如果finally块与一个try联合使用，finally块将在try结束之前执行
-* 
+* RUNTIMEEXCEPTION 才会让事务回滚
