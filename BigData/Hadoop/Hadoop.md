@@ -43,6 +43,24 @@ Hadoop提供了一个稳定的共享存储和分析系统。存储由HDFS实现�
    到磁盘
 
 ## YARN
+* https://www.cnblogs.com/wcwen1990/p/6737985.html
 * 提供请求和使用集群资源的底层API
 * 资源管理器和节点管理器
- 
+![](http://images2015.cnblogs.com/blog/669905/201704/669905-20170420115226665-1020933684.png)
+* YARN主要由ResourceManager、NodeManager、ApplicationMaster和Container组成
+* ResourceManager 一个全局的资源管理器，集群只有一个，负责整个系统的资源管理和分配，包括处理客户端请求、启动/监控APP master、监控nodemanager、资源的分配与调度
+    * 调度器：三种FIFO调度器，容量调度器，公平调度器
+    * 应用程序管理器： 应用程序管理器负责管理整个系统中所有应用程序，包括应用程序提交、与调度器协商资源以启动ApplicationMaster、监控ApplicationMaster运行状态并在失败时重新启动它等。
+* ApplicationMaster：管理YARN内运行的应用程序的每个实例。负责协调来自resourcemanager的资源，并通过nodemanager监视容易的执行和资源使用情况。
+    * 数据切分
+    * 为应用程序申请资源并进一步分配给内部任务。
+    * 任务监控与容错
+* NodeManager 整个集群有多个，负责每个节点上的资源和使用。
+    * 单个节点上的资源管理和任务。
+    * 处理来自于resourcemanager的命令。
+    * 处理来自于app master的命令。
+* Container 执行特定程序的进程 资源抽象 动态生成
+
+## I/O
+* CRC-32C校验保证数据完整性
+* 校验 压缩 序列化  
