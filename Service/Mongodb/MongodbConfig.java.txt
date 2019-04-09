@@ -1,0 +1,29 @@
+package Mongodb;
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+@Configuration
+@DisconfFile(filename = "mongodb.properties")
+public class MongodbConfig {
+    @Bean
+    @DependsOn("disconfMgrBean2")
+    public MongoClient mongoClient(DisconfMongodb disconfMongodb) {
+        List<MongoCredential> credentials = new ArrayList<>();
+        String database = (disconfMongodb.getAuthenticationDatabase() != null
+                ? disconfMongodb.getAuthenticationDatabase() : disconfMongodb.getDatabase());
+        credentials.add(MongoCredential.createCredential(disconfMongodb.getUsername(), database,
+                disconfMongodb.getPassword().toCharArray()));
+        return new MongoClient(
+                Collections.singletonList(new ServerAddress(disconfMongodb.getHost(), disconfMongodb.getPort())), credentials,
+                MongoClientOptions.builder().build());
+    }
+
+    @Bean
+    @DependsOn("disconfMgrBean2")
+    public MongoDbFactory mongoDbFactory(MongoClient mongoClient, DisconfMongodb disconfMongodb) {
+        return new SimpleMongoDbFactory(mongoClient, disconfMongodb.getDatabase());
+    }
+}
