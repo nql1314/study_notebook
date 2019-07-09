@@ -1,6 +1,6 @@
 #### 容器源码学习，总结自https://blog.csdn.net/u011240877
 ### 集合关系图
-![](../../resources/Collection.jpg)
+![](../resources/Collection.jpg)
 ### Iterator
 * 在调用迭代器的 next,remove 方法时都会比较 expectedModCount 和 modCount 是否相等,如果不相等就会抛出 ConcurrentModificationException ,也就是成为了 fail-fast.
 * 用 CopyOnWriteArrayList,ConcurrentHashMap 替换 ArrayList, HashMap,它们的功能和名字一样,在写入时会创建一个 copy,然后在这个 copy 版本上进行修改操作,这样就不会影响原来的迭代.不过坏处就是浪费内存.
@@ -9,11 +9,11 @@
           System.out.println(iterator.next());
       }
 #### ListIterator
-![](../../resources/ListIterator.png)
+![](../resources/ListIterator.png)
 多了向前的几个方法
 ### Collection
 * boolean retainAll(Collection<?> c) 
-  保留本集合中 c 集合中两者共有的,如果集合有改变就返回 true
+  求交集，保留本集合中 c 集合中两者共有的,如果集合有改变就返回 true
 * Object[] toArray() 
   返回一个包含集合中所有元素的数组
 * <T> T[] toArray(T[] a)
@@ -42,11 +42,11 @@
 ### Queue
 * FIFO
 * 循环队列 rear = (rear - size) % size，放满条件 (rear - front) % size = -1，rear + size - font
-* ![](../../resources/queue.jpg)
+* ![](../resources/queue.jpg)
 * 禁止添加 null 元素，但有些实现类没响应，例如LinkedList。
 ### Deque
 * 双端队列，两边都能插入删除。
-* ![](../../resources/deque.jpg)
+* ![](../resources/deque.jpg)
 * 继承了queue的方法
 * 也能作为stack，LIFO,push(e),pop(),peek().
 ### LinkedList
@@ -126,7 +126,7 @@ for (Object o : entrySet) {
 * Hashtable 不允许null 且是同步的
 * hash值高低16位共同参与运算，散列更加均衡。return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
 * 插入逻辑
-![](../../resources/hashput.jpg)
+![](../resources/hashput.jpg)
   1. 先调用 hash() 方法计算哈希值
   2. 然后调用 putVal() 方法中根据哈希值进行相关操作
   3. 如果当前 哈希表内容为空，新建一个哈希表
