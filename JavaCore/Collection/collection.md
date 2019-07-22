@@ -43,6 +43,7 @@
 * FIFO
 * 循环队列 rear = (rear - size) % size，放满条件 (rear - front) % size = -1，rear + size - font
 * ![](../resources/queue.jpg)
+* offer在容量满时返回false，而add抛异常；poll在空是返回null，remove抛异常
 * 禁止添加 null 元素，但有些实现类没响应，例如LinkedList。
 ### Deque
 * 双端队列，两边都能插入删除。
@@ -101,7 +102,7 @@ for (Object o : entrySet) {
 }
 ```
 * 实现类：Hashtable 古老，线程安全;HashMap：速度快，无序；TreeMap:有序，效率低；LinkedHashMap:结合 HashMap 和 TreeMap 的优点，有序的同时效率也不错，仅比 HashMap 慢一点
-### HashMap
+### Hash
 * 哈希 其实是随机存储的一种优化，先进行分类，然后查找时按照这个对象的分类去找。
 * 链接法,将所有关键字为同义词的结点链接在同一个单链表中。开放定址法,包括线性探查法(适用稀疏表)，双重散列法,hi=(h(key)+i*h1(key)) ％ m，0 ≤ i ≤ m-1,h1(key) 的值和 m 互素
 * 在哈希表上的插入、查找、删除等操作的时间复杂度是 O(1)
@@ -148,6 +149,8 @@ for (Object o : entrySet) {
   2. 然后再用 (n - 1) & hash 计算出桶的位置;
   3. 在桶里的链表进行遍历查找。
 * jdk1.8引入红黑树,优化链表元素多的时候查找性能,扩充阈值8，缩小阈值6
+### HashTable
+* 同步的HashMap，线程安全，效率不高
 ### CopyOnWriteArrayList
 * Copy-On-Write机制：读写分离，修改时copy一个容器进行修改，修改完指向新的容器，可以并发读而不用加锁
 * 写的时候加ReentrantLock,防止多线程copy出多个副本
@@ -166,16 +169,24 @@ for (Object o : entrySet) {
 * 当accessOrder为true时，可以用来实现LRU(LAST RECENTLY USED)算法
 
 ### TreeMap
+* 有序 且key是自然排序的
 //TODO 红黑树
 
 ### ConcurrentHashMap
+#### jdk1.7实现
 * 分段锁，分成16(默认)个槽(segment)，每次操作只对对应的槽加锁
 * 写入：
     1. 先计算hash值，找到segment位置，然后在相应segment 写入；
     2. 写入加独占锁，其余操作参考hashmap
-
+#### jdk1.8实现
+* https://blog.csdn.net/bill_xiang_/article/details/81122044
+* 类似HashMap的实现 有一个链表数组 
+* put时 如果hash计算后对应的Node存在，则对该Node加锁，大于8触发红黑树转换，添加完元素后解锁
+* size计算 baseCount + sum(CounterCell)
+* 通过缩小锁粒度来提高并发性能
 ### ConcurrentSkipListMap
-* 线程安全 有序
+* 线程安全 有序 key 自然顺序
+* 空间换时间 插入 读取 O(logn)
 
 ### HashSet
 * 底层就是个HashMap，用key存储元素,同理LinkedHashSet,TreeSet等

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * disconf 配置信息 app.properties
  */
 @Service
-@Scope("singleton")
+@Scope("singleton1")
 @DisconfFile(filename = "app.properties")
 public class DisconfApp {
 
