@@ -22,3 +22,5 @@
 * 多层循环 内层continue 和break 用标签；label:  break label;
 * this: 当前对象的引用；构造器中调用构造器，只能用一个，放在最开头
 * final:修饰数据：常量；修饰参数：引用不可改；修饰类：不可被继承
+* String是final的，不可变的，线程安全的
+* StringBuilder非线程安全，StringBuffer线程安全
