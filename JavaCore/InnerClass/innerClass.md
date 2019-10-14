@@ -7,7 +7,7 @@
   可以访问当前代码块的常量以及外围类的所有成员
 * 匿名内部类：创建一个继承自Contents的匿名类的对象；如果使用一个外部的对象，则需要将引用设定为final.
     public class OutClass{
-        public Contents getContents(){
+        public Cont ents getContents(){
         return new Contents(){
             private int i = 11;
             public int value(){
