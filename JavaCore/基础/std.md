@@ -26,3 +26,4 @@
 * String是final的，不可变的，线程安全的
 * StringBuilder非线程安全，StringBuffer线程安全
 * 每个编译单元只能有一个public类
+* instanceof 比较的是这个类是否是另一个类或者其派生类；== 比较确切的类型
