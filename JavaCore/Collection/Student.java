@@ -1,5 +1,7 @@
 package Collection;
 
+import java.util.HashMap;
+
 public class Student {
     private int id;
     private String name;

@@ -53,7 +53,5 @@ public class MethodClass {
         m.setAccessible(true);//解除私有限定
         Object result = m.invoke(obj, 20);//需要两个参数，一个是要调用的对象（获取有反射），一个是实参
         System.out.println("返回值：" + result);
-
-
     }
 }

@@ -1,5 +1,5 @@
 ### 线程状态
-![](../../resources/thread.jpg)
+![](../resources/thread.jpg)
 ### 新建(new),可运行(runnable),阻塞(blocked),无限期等待(waiting),限期等待(timed waiting),死亡(terminated)
 * 线程可以通过实现runnable,callable,继承thread。并且实现接口会更好一些，因为：
   Java 不支持多重继承，因此继承了 Thread 类就无法继承其它类，但是可以实现多个接口；

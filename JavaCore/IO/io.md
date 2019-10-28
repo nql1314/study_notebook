@@ -1,5 +1,5 @@
 ## IO分类
-![](../../resources/io.jpg)
+![](../resources/io.jpg)
 * 磁盘操作：File
 * 字节操作：InputStream 和 OutputStream
 * 字符操作：Reader 和 Writer

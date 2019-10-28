@@ -78,7 +78,7 @@ Vector 默认扩容 2 倍，ArrayList 是 1.5
 * push(),pop(),peek()
 ### Map
 * key-value对
-* KeySet,Values,Entry
+* KeySet,Values,EntrySet
 * 通过 Map.entrySet() 方法获得的是一组 Entry 的集合，保存在 Set 中，所以 Map 中的 Entry 也不能重复。
   public Set<Map.Entry<K,V>> entrySet();
 * 3种遍历
@@ -101,7 +101,7 @@ for (Object o : entrySet) {
     System.out.println(entry.getKey() + " / " + entry.getValue());
 }
 ```
-* 实现类：Hashtable 古老，线程安全;HashMap：速度快，无序；TreeMap:有序，效率低；LinkedHashMap:结合 HashMap 和 TreeMap 的优点，有序的同时效率也不错，仅比 HashMap 慢一点
+* 实现类：Hashtable 古老，线程安全;HashMap：速度快，无序；TreeMap:排序，效率低；LinkedHashMap:结合 HashMap 和 TreeMap 的优点，有序的同时效率也不错，仅比 HashMap 慢一点
 ### Hash
 * 哈希 其实是随机存储的一种优化，先进行分类，然后查找时按照这个对象的分类去找。
 * 链接法,将所有关键字为同义词的结点链接在同一个单链表中。开放定址法,包括线性探查法(适用稀疏表)，双重散列法,hi=(h(key)+i*h1(key)) ％ m，0 ≤ i ≤ m-1,h1(key) 的值和 m 互素
@@ -123,7 +123,7 @@ for (Object o : entrySet) {
 * 遍历整个 Map 需要的时间与 桶(数组) 的长度成正比（因此初始化时 HashMap 的容量不宜太大）
 * 两个关键因子：初始容量(默认16,必须是 2 的整数次方)、加载因子(0.75)
 * fail-fast机制
-* 当桶数量不大于8时采用数组，超过后采用树(JDK1.8特性)
+* 当桶中节点数量不大于8时采用数组，超过后采用树(JDK1.8特性)
 * Hashtable 不允许null 且是同步的
 * hash值高低16位共同参与运算，散列更加均衡。return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
 * 插入逻辑
