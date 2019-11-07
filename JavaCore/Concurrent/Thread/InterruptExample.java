@@ -17,6 +17,6 @@ public class InterruptExample {
         Thread thread1 = new MyThread1();
         thread1.start();
         thread1.interrupt();
-        System.out.println("Main run");
+        System.out.println("Main1 run");
     }
 }
