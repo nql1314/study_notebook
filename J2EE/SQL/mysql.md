@@ -1,0 +1,1 @@
+select * from table where ? for update 加锁
