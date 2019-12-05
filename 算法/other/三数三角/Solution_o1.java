@@ -1,5 +1,9 @@
 import java.util.Random;
 
+/**
+ * 0,1,2三个数字组成一串字符，向上计算成三角，求顶点。
+ * 每个小三角中数字要么是一样的，要么是3个不同的
+ */
 public class Solution_o1 {
     int nums[];
 
