@@ -29,8 +29,9 @@ public class Solution_o1 {
         prove();
         int[] nums = new int[1024 * 1024];
 //        int[] nums = {0,2,1,2,0,1,0,1,2,0};
+        Random random = new Random();
         for (int i = 0; i < nums.length; i++) {
-            nums[i] = new Random().nextInt(3);
+            nums[i] = random.nextInt(3);
         }
         long start = System.currentTimeMillis();
         System.out.println("result:" + new Solution_o1().getPeak(nums) + "       time:" + (System.currentTimeMillis() - start));
