@@ -7,3 +7,6 @@
 
 
 producer,consumer,topic,broker
+
+![](../../resource/kafka1.jpg)
+![](../../resource/kafka2.jpg)
